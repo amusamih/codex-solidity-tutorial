@@ -1,0 +1,26 @@
+# Generated compiler and test output
+cache/
+out/
+.logs/
+reports/
+backups/
+.ignore/
+broadcast/
+
+# Local credentials and editor settings
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Local-only recordings and production assets
+production/
+*.mkv
+*.mp4
+*.wav
+*.m4a
+*.mp3
+
+# Node dependencies; web/dist contains the actual static demo files
+node_modules/

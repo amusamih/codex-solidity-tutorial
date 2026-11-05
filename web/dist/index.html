@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local interface for the ETH vault on Anvil.">
+  <title>ETH Vault · Local demo</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ETH Vault home"><span class="mark" aria-hidden="true">◇</span> ETH Vault</a>
+      <span class="network"><span id="connection-dot" class="dot"></span><span id="connection">Connecting</span></span>
+    </header>
+    <main>
+      <div class="heading-row">
+        <div><p class="eyebrow">LOCAL ANVIL DEMONSTRATION</p><h1>Your vault, at a glance.</h1><p class="intro">Deposit ETH, withdraw when you need it, and follow your balances.</p></div>
+        <button id="refresh" class="text-button" type="button">↻ Refresh balances</button>
+      </div>
+      <section class="balances" aria-label="Current ETH balances">
+        <article class="balance-card featured"><p>Your vault balance</p><div><strong id="recorded">—</strong><span>ETH</span></div><small>Available to withdraw</small></article>
+        <article class="balance-card"><p>Your wallet</p><div><strong id="wallet">—</strong><span>ETH</span></div><small>Includes transaction gas costs</small></article>
+        <article class="balance-card"><p>ETH held by vault</p><div><strong id="vault-balance">—</strong><span>ETH</span></div><small>Actual contract balance</small></article>
+        <article class="balance-card"><p>Total owed</p><div><strong id="total">—</strong><span>ETH</span></div><small>Owed to all depositors</small></article>
+      </section>
+      <p class="precision">Balances displayed to 6 decimal places. Hover over a balance for its exact amount.</p>
+      <div class="workspace">
+        <section class="panel transfer-panel" aria-labelledby="transfer-title">
+          <div class="section-title"><span class="section-number">01</span><h2 id="transfer-title">Move your ETH</h2></div>
+          <p class="panel-description">Deposits are credited to your account. Withdrawals return ETH only to that same account.</p>
+          <form id="transfer-form" novalidate>
+            <label for="amount">ETH amount</label>
+            <div class="amount-wrap"><input id="amount" name="amount" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="0.1" aria-describedby="amount-help input-error"><span>ETH</span></div>
+            <p id="amount-help" class="field-help">Enter a positive amount, with up to 18 decimal places.</p>
+            <p id="input-error" class="field-error" role="alert"></p>
+            <div class="actions"><button id="deposit" class="primary" type="button" disabled>↓ Deposit</button><button id="withdraw" class="secondary" type="button" disabled>↑ Withdraw</button></div>
+          </form>
+          <div class="signing"><span aria-hidden="true">⌁</span><p><strong>Signed locally by Anvil</strong><br>Uses your existing unlocked test account. No wallet extension needed.</p></div>
+        </section>
+        <section class="panel activity-panel" aria-labelledby="activity-title">
+          <div class="section-title"><span class="section-number">02</span><h2 id="activity-title">Transaction activity</h2></div>
+          <div id="status" class="status" role="status" aria-live="polite">Connecting to your local vault…</div>
+          <div id="activity-empty" class="empty-state"><span aria-hidden="true">↗</span><h3>Ready when you are</h3><p>Your transactions from this session will appear here after confirmation.</p></div>
+          <ol id="activity" class="activity-list" aria-label="Session transactions"></ol>
+        </section>
+      </div>
+      <section class="connection-details" aria-label="Connected account and contract">
+        <div><span>VAULT CONTRACT</span><code id="vault-address">—</code></div>
+        <div><span>DEPOSITOR ACCOUNT</span><code id="account-address">—</code></div>
+      </section>
+    </main>
+    <footer><span>ETH Vault <span class="footer-separator">/</span> Local development</span><span>Anvil · Chain <span id="chain-id">31337</span> · Test ETH only</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "rpcUrl": "http://127.0.0.1:8545",
+  "chainId": 31337,
+  "vault": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+  "depositor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"
+}
